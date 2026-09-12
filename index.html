@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fabrizio Napoli — Portfolio</title>
+<meta name="description" content="Portfolio professionale di Fabrizio Napoli — BIM Specialist e Architectural Designer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,340;9..144,440;9..144,560&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #EDE9DF;
+    --plate: #E3DFD1;
+    --ink: #211F1B;
+    --ink-soft: #58554B;
+    --line: #C6BFAC;
+    --clay: #AD5D2E;
+    --olive: #6C6A46;
+    --olive-deep: #454429;
+    --max: 760px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--clay); color:var(--paper);}
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:440;
+    margin:0;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+
+  a{color:var(--clay); text-decoration-thickness:1px; text-underline-offset:3px;}
+  a:hover{color:var(--olive-deep);}
+
+  p{max-width:62ch; color:var(--ink-soft);}
+
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.04em;
+  }
+
+  /* ---------- layout shell ---------- */
+  .wrap{
+    max-width:1040px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  section{padding:96px 0;}
+  @media (max-width:640px){
+    section{padding:64px 0;}
+    .wrap{padding:0 20px;}
+  }
+
+  /* ---------- nav / sheet index rail ---------- */
+  nav.rail{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:50;
+    background:rgba(237,233,223,0.92);
+    backdrop-filter:blur(4px);
+    border-bottom:1px solid var(--line);
+  }
+  .rail-inner{
+    max-width:1040px;
+    margin:0 auto;
+    padding:14px 32px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .rail-mark{
+    font-family:'Fraunces', serif;
+    font-size:1rem;
+    color:var(--ink);
+    text-decoration:none;
+    white-space:nowrap;
+  }
+  .rail-links{
+    display:flex;
+    gap:22px;
+    flex-wrap:wrap;
+  }
+  .rail-links a{
+    color:var(--ink-soft);
+    text-decoration:none;
+    font-size:0.82rem;
+  }
+  .rail-links a:hover{color:var(--clay);}
+  @media (max-width:640px){
+    .rail-links{display:none;}
+  }
+
+  /* ---------- corner crop marks used on plates ---------- */
+  .plate{
+    position:relative;
+    border:1px solid var(--line);
+    padding:44px;
+    background:var(--plate);
+  }
+  @media (max-width:640px){ .plate{padding:26px 22px;} }
+  .plate::before,.plate::after,
+  .plate .cA,.plate .cB{
+    content:"";
+    position:absolute;
+    width:14px; height:14px;
+    border-color:var(--ink-soft);
+  }
+  .plate::before{ top:-1px; left:-1px; border-top:1.5px solid var(--ink-soft); border-left:1.5px solid var(--ink-soft);}
+  .plate::after{ top:-1px; right:-1px; border-top:1.5px solid var(--ink-soft); border-right:1.5px solid var(--ink-soft);}
+  .plate .cA{ bottom:-1px; left:-1px; border-bottom:1.5px solid var(--ink-soft); border-left:1.5px solid var(--ink-soft);}
+  .plate .cB{ bottom:-1px; right:-1px; border-bottom:1.5px solid var(--ink-soft); border-right:1.5px solid var(--ink-soft);}
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding-top:170px;
+    padding-bottom:70px;
+  }
+  .hero-eyebrow{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    color:var(--ink-soft);
+    margin-bottom:28px;
+  }
+  .hero-eyebrow svg{flex:none;}
+  .hero h1{
+    font-size:clamp(3rem, 9vw, 5.6rem);
+    line-height:0.98;
+  }
+  .hero .role{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.95rem;
+    color:var(--clay);
+    margin-top:22px;
+    letter-spacing:0.02em;
+  }
+  .hero .lede{
+    margin-top:22px;
+    font-size:1.1rem;
+    max-width:52ch;
+  }
+  .scale-bar{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:40px 0 34px;
+    color:var(--ink-soft);
+  }
+  .scale-bar svg{flex:none;}
+  .scale-bar span{font-family:'IBM Plex Mono', monospace; font-size:0.72rem;}
+  .contact-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 28px;
+    font-size:0.9rem;
+  }
+  .contact-row a{color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line);}
+  .contact-row a:hover{color:var(--clay); border-color:var(--clay);}
+
+  /* ---------- section headers ---------- */
+  .sec-head{
+    display:flex;
+    align-items:baseline;
+    gap:18px;
+    margin-bottom:8px;
+  }
+  .sec-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--clay);
+  }
+  .sec-head h2{font-size:clamp(1.9rem, 4vw, 2.6rem);}
+  .sec-sub{color:var(--ink-soft); max-width:56ch; margin-top:14px;}
+
+  hr.rule{
+    border:none;
+    border-top:1px solid var(--line);
+    margin:44px 0;
+  }
+
+  /* ---------- about ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:56px;
+    margin-top:48px;
+    align-items:start;
+  }
+  @media (max-width:760px){ .about-grid{grid-template-columns:1fr; gap:40px;} }
+
+  .legend h3{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    text-transform:none;
+    color:var(--ink-soft);
+    margin-bottom:18px;
+    letter-spacing:0.02em;
+  }
+  .legend ul{list-style:none; margin:0; padding:0;}
+  .legend li{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    padding:12px 0;
+    border-top:1px solid var(--line);
+    font-size:0.95rem;
+    color:var(--ink);
+  }
+  .legend li:last-child{border-bottom:1px solid var(--line);}
+  .swatch{
+    flex:none;
+    width:14px; height:14px;
+    margin-top:4px;
+    border:1px solid var(--ink-soft);
+    background:
+      repeating-linear-gradient(45deg, var(--olive), var(--olive) 2px, transparent 2px, transparent 5px);
+  }
+
+  /* ---------- index of drawings ---------- */
+  .toc{margin-top:44px;}
+  .toc-row{
+    display:flex;
+    align-items:baseline;
+    gap:18px;
+    padding:20px 0;
+    border-top:1px solid var(--line);
+    text-decoration:none;
+    color:var(--ink);
+    transition:padding-left .15s ease;
+  }
+  .toc-row:last-child{border-bottom:1px solid var(--line);}
+  .toc-row:hover{padding-left:8px; color:var(--clay);}
+  .toc-row .n{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--clay);
+    font-size:0.85rem;
+    flex:none;
+    width:28px;
+  }
+  .toc-row .t{
+    font-family:'Fraunces', serif;
+    font-size:1.2rem;
+    flex:none;
+  }
+  .toc-row .fill{
+    flex:1;
+    border-bottom:1px dotted var(--line);
+    margin:0 4px;
+    transform:translateY(-5px);
+  }
+  .toc-row .loc{
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    white-space:nowrap;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  @media (max-width:640px){
+    .toc-row{flex-wrap:wrap;}
+    .toc-row .fill{display:none;}
+    .toc-row .t{width:100%;}
+  }
+
+  /* ---------- project plates ---------- */
+  .project{margin-top:64px;}
+  .project:first-of-type{margin-top:44px;}
+  .plate-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+    margin-bottom:6px;
+  }
+  .plate-head .mono{color:var(--olive-deep);}
+  .kicker{color:var(--clay); font-family:'IBM Plex Mono', monospace; font-size:0.78rem; margin-bottom:10px; display:block;}
+  .plate h3.title{font-size:clamp(1.5rem, 3.4vw, 2.1rem); margin-bottom:6px;}
+  .plate h3.title + p.blurb{margin-top:10px; font-size:1.02rem;}
+  .meta-line{
+    margin-top:18px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.76rem;
+    color:var(--ink-soft);
+  }
+  .tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:22px;
+  }
+  .tag{
+    border:1px solid var(--olive);
+    color:var(--olive-deep);
+    padding:5px 12px;
+    font-size:0.75rem;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .plate-body{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+    margin-top:32px;
+    padding-top:28px;
+    border-top:1px solid var(--line);
+  }
+  @media (max-width:760px){ .plate-body{grid-template-columns:1fr;} }
+  .block h4{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--ink-soft);
+    margin-bottom:10px;
+    letter-spacing:0.02em;
+  }
+  .block p{font-size:0.94rem; margin:0; max-width:none;}
+  .block ul{margin:0; padding-left:18px; color:var(--ink-soft); font-size:0.94rem;}
+  .block li{margin-bottom:6px;}
+
+  .title-block{
+    margin-top:32px;
+    padding-top:16px;
+    border-top:1px solid var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    color:var(--ink-soft);
+    letter-spacing:0.02em;
+  }
+
+  /* ---------- footer / final title block ---------- */
+  footer{
+    background:var(--olive-deep);
+    color:var(--paper);
+  }
+  footer .wrap{padding:96px 32px 60px;}
+  footer h2{color:var(--paper); font-size:clamp(2rem,5vw,3rem);}
+  footer p{color:#D7D4C2;}
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:48px;
+    margin-top:44px;
+  }
+  @media (max-width:760px){ .footer-grid{grid-template-columns:1fr;} }
+  footer .card{
+    border:1px solid rgba(237,233,223,0.25);
+    padding:30px;
+  }
+  footer .card h3{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    color:#C9C6A9;
+    margin-bottom:16px;
+    text-transform:none;
+  }
+  footer .contact-list{list-style:none; margin:0; padding:0;}
+  footer .contact-list li{padding:9px 0; border-top:1px solid rgba(237,233,223,0.18); font-size:0.94rem;}
+  footer .contact-list a{color:var(--paper);}
+  footer .contact-list a:hover{color:#F0C9A8;}
+  .end-mark{
+    margin-top:60px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    color:#9E9C7F;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+  }
+  .end-mark .line{flex:1; height:1px; background:rgba(237,233,223,0.2);}
+</style>
+</head>
+<body>
+
+<nav class="rail">
+  <div class="rail-inner">
+    <a class="rail-mark" href="#top">F. Napoli</a>
+    <div class="rail-links">
+      <a href="#chi-sono">Chi sono</a>
+      <a href="#progetti">Progetti</a>
+      <a href="#contatti">Contatti</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero wrap" id="top">
+  <div class="hero-eyebrow">
+    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+      <circle cx="15" cy="15" r="14" stroke="#58554B" stroke-width="1"/>
+      <path d="M15 3 V15 L22 20" stroke="#AD5D2E" stroke-width="1.3"/>
+      <path d="M15 2 L15 6" stroke="#58554B" stroke-width="1"/>
+    </svg>
+    <span class="mono">PORTFOLIO PROFESSIONALE — SELECTED WORKS 2023–2026</span>
+  </div>
+
+  <h1>Fabrizio<br>Napoli</h1>
+  <div class="role">BIM SPECIALIST / ARCHITECTURAL DESIGNER</div>
+
+  <p class="lede">Architettura, BIM e rappresentazione del progetto: dalla lettura del contesto alla modellazione, fino alla comunicazione grafica e alla visualizzazione.</p>
+
+  <div class="scale-bar">
+    <svg width="160" height="14" viewBox="0 0 160 14">
+      <line x1="0" y1="7" x2="160" y2="7" stroke="#58554B" stroke-width="1"/>
+      <line x1="0" y1="2" x2="0" y2="12" stroke="#58554B" stroke-width="1"/>
+      <line x1="40" y1="4" x2="40" y2="10" stroke="#58554B" stroke-width="1"/>
+      <line x1="80" y1="2" x2="80" y2="12" stroke="#58554B" stroke-width="1"/>
+      <line x1="120" y1="4" x2="120" y2="10" stroke="#58554B" stroke-width="1"/>
+      <line x1="160" y1="2" x2="160" y2="12" stroke="#58554B" stroke-width="1"/>
+    </svg>
+    <span>SCALA 1:100</span>
+  </div>
+
+  <div class="contact-row">
+    <a href="mailto:napoli.fabrizio.bim@gmail.com">napoli.fabrizio.bim@gmail.com</a>
+    <a href="tel:+393513023297">+39 351 302 3297</a>
+    <a href="https://www.linkedin.com/in/fabrizio-napoli-1863b2423/" target="_blank" rel="noopener">LinkedIn</a>
+    <span style="color:var(--ink-soft)">Riccione (RN), Emilia-Romagna</span>
+  </div>
+</header>
+
+<!-- ============ CHI SONO ============ -->
+<section id="chi-sono">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">§01</span>
+      <h2>Chi sono</h2>
+    </div>
+
+    <div class="about-grid">
+      <div>
+        <p>Sono Fabrizio Napoli, laureato in Ingegneria Civile, con un percorso formativo sviluppato tra edilizia, architettura e progettazione. Dopo aver maturato una base tecnica nell'ambito dell'Ingegneria Civile, sto proseguendo il mio percorso per completare la formazione in Edilizia e Architettura.</p>
+        <p>Mi occupo di modellazione 2D e 3D, tavole tecniche, rappresentazione progettuale e rendering. Lavoro in modo ordinato e concreto, con attenzione alla precisione del modello, alla qualità grafica e alla chiarezza della comunicazione del progetto.</p>
+        <p>Sono interessato a entrare in contesti professionali in cui poter contribuire a progetti architettonici e BIM, collaborando con studi, imprese e team tecnici e continuando a sviluppare le mie competenze.</p>
+      </div>
+
+      <div class="legend">
+        <h3>LEGENDA — COMPETENZE E INTERESSI</h3>
+        <ul>
+          <li><span class="swatch"></span>Modellazione e progettazione con AutoCAD e Revit.</li>
+          <li><span class="swatch"></span>Rendering e visualizzazione architettonica con Enscape.</li>
+          <li><span class="swatch"></span>Post-produzione e comunicazione grafica con Photoshop.</li>
+          <li><span class="swatch"></span>Rilievo, analisi dell'esistente e restituzione tecnica.</li>
+          <li><span class="swatch"></span>Processi BIM e gestione delle informazioni di progetto.</li>
+          <li><span class="swatch"></span>Innovazione, prototipi, materiali e soluzioni sostenibili.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INDICE PROGETTI ============ -->
+<section id="progetti" style="padding-top:0;">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">§02</span>
+      <h2>Indice progetti</h2>
+    </div>
+    <p class="sec-sub">Una selezione di lavori accademici che racconta il percorso tra restauro, analisi dell'esistente, pianificazione urbanistica, composizione architettonica e rappresentazione tecnica.</p>
+
+    <div class="toc">
+      <a class="toc-row" href="#p01"><span class="n">01</span><span class="t">Restauro di un'abitazione rurale ad Aterrana</span><span class="fill"></span><span class="loc">Montoro (AV)</span></a>
+      <a class="toc-row" href="#p02"><span class="n">02</span><span class="t">Piano Urbanistico Attuativo</span><span class="fill"></span><span class="loc">Mercato San Severino (SA)</span></a>
+      <a class="toc-row" href="#p03"><span class="n">03</span><span class="t">Composizione Architettonica II</span><span class="fill"></span><span class="loc">Salerno</span></a>
+      <a class="toc-row" href="#p04"><span class="n">04</span><span class="t">Composizione Architettonica III</span><span class="fill"></span><span class="loc">Salerno</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGETTO 01 ============ -->
+<section class="project" id="p01">
+  <div class="wrap">
+    <div class="plate">
+      <div class="cA"></div><div class="cB"></div>
+      <span class="kicker">PROGETTO 01 — RESTAURO</span>
+      <div class="plate-head">
+        <h3 class="title">Restauro di un'abitazione rurale<br>ad Aterrana</h3>
+        <span class="mono">SHEET&nbsp;01/04</span>
+      </div>
+      <p class="blurb">Analisi, conservazione e progetto: dal rilievo materico alla proposta di restauro.</p>
+      <div class="meta-line">2023/2024 — CORSO DI RESTAURO DELL'ARCHITETTURA — UNIVERSITÀ DEGLI STUDI DI SALERNO — MONTORO (AV)</div>
+
+      <div class="tags">
+        <span class="tag">Rilievo materico</span>
+        <span class="tag">Analisi del degrado</span>
+        <span class="tag">Proposta di restauro</span>
+        <span class="tag">Render fotorealistici</span>
+      </div>
+
+      <div class="plate-body">
+        <div class="block">
+          <h4>CONCEPT</h4>
+          <p>Il progetto riguarda il restauro di un'abitazione rurale nel borgo di Aterrana, nel comune di Montoro. Il lavoro nasce dall'analisi storica e dal rilievo dell'edificio, con l'obiettivo di leggere l'evoluzione del manufatto, le criticità materiche e strutturali e il rapporto con il contesto urbano e paesaggistico. Il progetto è stato sviluppato in gruppo.</p>
+        </div>
+        <div class="block">
+          <h4>CONTRIBUTO PERSONALE</h4>
+          <ul>
+            <li>Inquadramento territoriale e analisi storica del borgo.</li>
+            <li>Rilievo fotografico, rilievo materico e lettura delle superfici.</li>
+            <li>Analisi del degrado e definizione degli interventi di consolidamento.</li>
+            <li>Proposta progettuale con piante, sezioni e ricostruzioni fotorealistiche.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h4>COMPETENZE EVIDENZIATE</h4>
+          <p>Lavoro di gruppo, lettura del contesto, analisi dell'esistente, interpretazione delle superfici, definizione degli interventi e restituzione grafica finale.</p>
+        </div>
+      </div>
+
+      <div class="title-block">
+        <span>DISEGNATO — F. NAPOLI</span>
+        <span>UNIVERSITÀ DEGLI STUDI DI SALERNO</span>
+        <span>TAV. 01/04</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGETTO 02 ============ -->
+<section class="project" id="p02">
+  <div class="wrap">
+    <div class="plate">
+      <div class="cA"></div><div class="cB"></div>
+      <span class="kicker">PROGETTO 02 — URBANISTICA</span>
+      <div class="plate-head">
+        <h3 class="title">Piano Urbanistico Attuativo<br>Mercato San Severino</h3>
+        <span class="mono">SHEET&nbsp;02/04</span>
+      </div>
+      <p class="blurb">Dal territorio al progetto urbano: dall'analisi degli strumenti urbanistici e delle condizioni territoriali alla definizione dell'assetto insediativo.</p>
+      <div class="meta-line">CORSO DI URBANISTICA — UNIVERSITÀ DEGLI STUDI DI SALERNO — MERCATO SAN SEVERINO (SA)</div>
+
+      <div class="tags">
+        <span class="tag">Urbanistica</span>
+        <span class="tag">Analisi territoriale</span>
+        <span class="tag">Pianificazione</span>
+        <span class="tag">Vincoli</span>
+        <span class="tag">Lottizzazione</span>
+      </div>
+
+      <div class="plate-body">
+        <div class="block">
+          <h4>OBIETTIVO &amp; METODO</h4>
+          <p>Elaborazione di un Piano Urbanistico Attuativo per un'area di trasformazione a Mercato San Severino, dall'analisi territoriale e normativa fino alla definizione dell'assetto insediativo. La pianificazione vigente, l'uso del suolo, i rischi e i vincoli hanno guidato l'individuazione delle superfici edificabili, degli standard urbanistici e della distribuzione funzionale dei lotti.</p>
+        </div>
+        <div class="block">
+          <h4>ESITO PROGETTUALE</h4>
+          <p>La proposta integra funzioni residenziali e direzionali con verde pubblico, parcheggi, percorsi pedonali e superfici permeabili. Planimetria e profili verificano il rapporto tra costruito, spazi aperti e contesto.</p>
+        </div>
+        <div class="block">
+          <h4>COLLABORAZIONE &amp; COMPETENZE</h4>
+          <p>Progetto accademico sviluppato in collaborazione con un altro studente. Analisi territoriale e normativa, lettura dei vincoli, dimensionamento urbanistico, organizzazione funzionale e rappresentazione del progetto urbano.</p>
+        </div>
+      </div>
+
+      <div class="title-block">
+        <span>DISEGNATO — F. NAPOLI</span>
+        <span>UNIVERSITÀ DEGLI STUDI DI SALERNO</span>
+        <span>TAV. 02/04</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGETTO 03 ============ -->
+<section class="project" id="p03">
+  <div class="wrap">
+    <div class="plate">
+      <div class="cA"></div><div class="cB"></div>
+      <span class="kicker">PROGETTO 03 — COMPOSIZIONE</span>
+      <div class="plate-head">
+        <h3 class="title">Composizione Architettonica II<br>Percorso urbano e centro espositivo</h3>
+        <span class="mono">SHEET&nbsp;03/04</span>
+      </div>
+      <p class="blurb">Progetto d'esame articolato in due semestri: dal modello fisico e dal rapporto con il contesto urbano allo sviluppo di un organismo architettonico definito.</p>
+      <div class="meta-line">CORSO DI COMPOSIZIONE ARCHITETTONICA II — PROGETTO IN DUE SEMESTRI — UNIVERSITÀ DEGLI STUDI DI SALERNO</div>
+
+      <div class="tags">
+        <span class="tag">Modello fisico</span>
+        <span class="tag">Spazio pubblico</span>
+        <span class="tag">Percorso urbano</span>
+        <span class="tag">Centro espositivo</span>
+      </div>
+
+      <div class="plate-body">
+        <div class="block">
+          <h4>OBIETTIVO</h4>
+          <p>Indagare il rapporto tra percorso, spazio costruito e città, partendo dal modello fisico per arrivare a un organismo architettonico che diventa centro espositivo e dispositivo urbano.</p>
+        </div>
+        <div class="block">
+          <h4>PRIMO / SECONDO SEMESTRE</h4>
+          <p>Costruzione del modello fisico e studio della sequenza di spazi e connessioni con il tessuto esistente; poi sviluppo del percorso urbano e del centro espositivo come sistema di nuovi spazi pubblici, rampe, affacci e luoghi di sosta, lavorando su quote, sezione e continuità tra architettura e città.</p>
+        </div>
+        <div class="block">
+          <h4>COMPETENZE EVIDENZIATE</h4>
+          <p>Modellazione fisica, lettura del contesto, composizione architettonica, rappresentazione grafica in tavola e sintesi di un processo progettuale sviluppato in due fasi.</p>
+        </div>
+      </div>
+
+      <div class="title-block">
+        <span>DISEGNATO — F. NAPOLI</span>
+        <span>UNIVERSITÀ DEGLI STUDI DI SALERNO</span>
+        <span>TAV. 03/04</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGETTO 04 ============ -->
+<section class="project" id="p04" style="padding-bottom:64px;">
+  <div class="wrap">
+    <div class="plate">
+      <div class="cA"></div><div class="cB"></div>
+      <span class="kicker">PROGETTO 04 — COMPOSIZIONE</span>
+      <div class="plate-head">
+        <h3 class="title">Composizione Architettonica III<br>Flussi pedonali e spazio urbano</h3>
+        <span class="mono">SHEET&nbsp;04/04</span>
+      </div>
+      <p class="blurb">Studio dei flussi pedonali e dei visitatori per gestire i punti di congestione e distribuire meglio i percorsi durante le Luci d'Artista a Salerno.</p>
+      <div class="meta-line">CORSO DI COMPOSIZIONE ARCHITETTONICA III — ANALISI DEI FLUSSI DURANTE EVENTI AD ALTA INTENSITÀ URBANA</div>
+
+      <div class="tags">
+        <span class="tag">Flussi pedonali</span>
+        <span class="tag">Salerno</span>
+        <span class="tag">Luci d'Artista</span>
+        <span class="tag">Spazio pubblico</span>
+      </div>
+
+      <div class="plate-body">
+        <div class="block">
+          <h4>OBIETTIVO &amp; STRATEGIA</h4>
+          <p>Progettare una distribuzione più efficiente dei flussi pedonali in un contesto urbano soggetto a forti picchi di presenze. Individuazione di punti di accumulo, deviazioni e attraversamenti strategici per separare i flussi e ridurre le congestioni nei tratti più critici del percorso.</p>
+        </div>
+        <div class="block">
+          <h4>ESITO</h4>
+          <p>Una lettura più chiara del movimento delle persone, con soluzioni spaziali capaci di migliorare la fruizione urbana durante eventi straordinari e condizioni di forte affluenza.</p>
+        </div>
+        <div class="block">
+          <h4>COMPETENZE EVIDENZIATE</h4>
+          <p>Analisi dei flussi, gestione dello spazio pubblico, progettazione dei percorsi e lettura delle criticità urbane legate alla densità dei visitatori.</p>
+        </div>
+      </div>
+
+      <div class="title-block">
+        <span>DISEGNATO — F. NAPOLI</span>
+        <span>UNIVERSITÀ DEGLI STUDI DI SALERNO</span>
+        <span>TAV. 04/04</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTATTI ============ -->
+<footer id="contatti">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num" style="color:#E8B98D;">§03</span>
+      <h2>Parliamo del prossimo progetto</h2>
+    </div>
+
+    <div class="footer-grid">
+      <div class="card">
+        <h3>PROFILO PROFESSIONALE</h3>
+        <p>Laureato in Ingegneria Civile, con formazione e interesse nell'ambito edilizio-architettonico, con particolare interesse di partecipazione corso BIM specialist, modellazione, rappresentazione tecnica e sviluppo del progetto.</p>
+        <p>Disponibile a valutare opportunità di collaborazione e inserimento presso studi di architettura, società di ingegneria, imprese e team tecnici.</p>
+      </div>
+      <div class="card">
+        <h3>CONTATTI</h3>
+        <ul class="contact-list">
+          <li>Email — <a href="mailto:napoli.fabrizio.bim@gmail.com">napoli.fabrizio.bim@gmail.com</a></li>
+          <li>Telefono — <a href="tel:+393513023297">+39 351 302 3297</a></li>
+          <li>LinkedIn — <a href="https://www.linkedin.com/in/fabrizio-napoli-1863b2423/" target="_blank" rel="noopener">fabrizio-napoli</a></li>
+          <li>Località — Riccione (RN), Emilia-Romagna</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="end-mark">
+      <span>FINE TAVOLA — BIM · ARCHITETTURA · INGEGNERIA CIVILE</span>
+      <span class="line"></span>
+      <span>© <span id="year"></span> FABRIZIO NAPOLI</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
