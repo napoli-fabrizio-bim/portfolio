@@ -382,6 +382,64 @@
     font-size:0.7rem;
   }
   .end-mark .line{flex:1; height:1px; background:rgba(237,233,223,0.2);}
+
+  /* ---------- figures / imagery ---------- */
+  .figure{
+    border:1px solid var(--line);
+    background:var(--paper);
+    padding:6px;
+  }
+  .figure img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .figure figcaption{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:9px 5px 3px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.66rem;
+    color:var(--ink-soft);
+    letter-spacing:0.02em;
+  }
+  .figure figcaption .fnum{color:var(--clay);}
+
+  .hero-figure{margin-top:52px;}
+  .hero-figure .figure img{max-height:520px;}
+  @media (max-width:640px){ .hero-figure .figure img{max-height:320px;} }
+
+  .fig-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin-top:30px;
+  }
+  .fig-grid .span2{grid-column:1 / -1;}
+  .fig-grid .figure img{aspect-ratio:4/3;}
+  .fig-grid .span2 img{aspect-ratio:16/8;}
+  @media (max-width:640px){
+    .fig-grid{grid-template-columns:1fr;}
+    .fig-grid .figure img{aspect-ratio:4/3;}
+  }
+
+  .profile-photo{
+    border:1px solid var(--line);
+    padding:6px;
+    background:var(--paper);
+    width:180px;
+    margin-bottom:24px;
+  }
+  .profile-photo img{width:100%; display:block;}
+  .profile-photo figcaption{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.62rem;
+    color:var(--ink-soft);
+    padding:8px 4px 2px;
+    letter-spacing:0.02em;
+  }
 </style>
 </head>
 <body>
@@ -431,6 +489,11 @@
     <a href="https://www.linkedin.com/in/fabrizio-napoli-1863b2423/" target="_blank" rel="noopener">LinkedIn</a>
     <span style="color:var(--ink-soft)">Riccione (RN), Emilia-Romagna</span>
   </div>
+
+  <figure class="figure hero-figure">
+    <img src="assets/hero-aterrana.jpg" alt="Ricostruzione fotorealistica del vicolo restaurato, Abitazione rurale ad Aterrana">
+    <figcaption><span>Ricostruzione fotorealistica — Abitazione rurale ad Aterrana</span><span class="fnum">TAV. 19</span></figcaption>
+  </figure>
 </header>
 
 <!-- ============ CHI SONO ============ -->
@@ -443,6 +506,10 @@
 
     <div class="about-grid">
       <div>
+        <figure class="profile-photo">
+          <img src="assets/profile.jpg" alt="Ritratto di Fabrizio Napoli">
+          <figcaption>F. NAPOLI</figcaption>
+        </figure>
         <p>Sono Fabrizio Napoli, laureato in Ingegneria Civile, con un percorso formativo sviluppato tra edilizia, architettura e progettazione. Dopo aver maturato una base tecnica nell'ambito dell'Ingegneria Civile, sto proseguendo il mio percorso per completare la formazione in Edilizia e Architettura.</p>
         <p>Mi occupo di modellazione 2D e 3D, tavole tecniche, rappresentazione progettuale e rendering. Lavoro in modo ordinato e concreto, con attenzione alla precisione del modello, alla qualità grafica e alla chiarezza della comunicazione del progetto.</p>
         <p>Sono interessato a entrare in contesti professionali in cui poter contribuire a progetti architettonici e BIM, collaborando con studi, imprese e team tecnici e continuando a sviluppare le mie competenze.</p>
@@ -501,6 +568,45 @@
         <span class="tag">Render fotorealistici</span>
       </div>
 
+      <div class="fig-grid">
+        <figure class="figure span2">
+          <img src="assets/p01-19-render.jpg" alt="Ricostruzioni fotorealistiche del vicolo e degli interni restaurati">
+          <figcaption><span>Ricostruzioni fotorealistiche</span><span class="fnum">TAV. 19</span></figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="assets/p01-01-inquadramento.jpg" alt="Inquadramento urbano e territoriale del borgo di Aterrana">
+          <figcaption><span>Inquadramento urbano territoriale</span><span class="fnum">TAV. 01</span></figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="assets/p01-02-vincoli.jpg" alt="Strumentazione urbanistica vigente, carta dei rischi e uso del suolo">
+          <figcaption><span>Strumentazione urbanistica</span><span class="fnum">TAV. 02</span></figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="assets/p01-03-rilievo-fotografico.jpg" alt="Rilievo fotografico dello stato di fatto">
+          <figcaption><span>Rilievo fotografico</span><span class="fnum">TAV. 03</span></figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="assets/p01-04-indagine-storica.jpg" alt="Indagine storica sul tessuto del borgo">
+          <figcaption><span>Indagine storica sul tessuto</span><span class="fnum">TAV. 04</span></figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="assets/p01-08-rilievo-materico.jpg" alt="Rilievo materico del prospetto principale">
+          <figcaption><span>Rilievo materico, prospetto</span><span class="fnum">TAV. 08</span></figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="assets/p01-10-degrado-principale.jpg" alt="Analisi del degrado della materia, prospetto principale">
+          <figcaption><span>Analisi del degrado, principale</span><span class="fnum">TAV. 10</span></figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="assets/p01-11-degrado-laterale.jpg" alt="Analisi del degrado della materia, prospetto laterale">
+          <figcaption><span>Analisi del degrado, laterale</span><span class="fnum">TAV. 11</span></figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="assets/p01-12-consolidamento.jpg" alt="Quadro fessurativo e interventi di consolidamento">
+          <figcaption><span>Quadro fessurativo e consolidamento</span><span class="fnum">TAV. 12</span></figcaption>
+        </figure>
+      </div>
+
       <div class="plate-body">
         <div class="block">
           <h4>CONCEPT</h4>
@@ -551,6 +657,17 @@
         <span class="tag">Lottizzazione</span>
       </div>
 
+      <div class="fig-grid">
+        <figure class="figure">
+          <img src="assets/p02-piano-urbanistico.jpg" alt="Inquadramento territoriale, rischio, vincoli e lottizzazione funzionale">
+          <figcaption><span>Analisi urbanistica del contesto</span><span class="fnum">TAV. 01</span></figcaption>
+        </figure>
+        <figure class="figure">
+          <img src="assets/p02-planimetria.jpg" alt="Planimetria di progetto e profili territoriali">
+          <figcaption><span>Planimetria e profili territoriali</span><span class="fnum">TAV. 02</span></figcaption>
+        </figure>
+      </div>
+
       <div class="plate-body">
         <div class="block">
           <h4>OBIETTIVO &amp; METODO</h4>
@@ -595,6 +712,17 @@
         <span class="tag">Centro espositivo</span>
       </div>
 
+      <div class="fig-grid">
+        <figure class="figure span2">
+          <img src="assets/p03-edificio.jpg" alt="Prospetto della casa-albergo e viste degli interni">
+          <figcaption><span>Prospetto e interni della casa-albergo</span><span class="fnum">SCALA 1:100</span></figcaption>
+        </figure>
+        <figure class="figure span2">
+          <img src="assets/p03-modello-fisico.jpg" alt="Modello fisico e tavola del percorso urbano e centro espositivo">
+          <figcaption><span>Modello fisico e centro espositivo</span><span class="fnum">II SEMESTRE</span></figcaption>
+        </figure>
+      </div>
+
       <div class="plate-body">
         <div class="block">
           <h4>OBIETTIVO</h4>
@@ -637,6 +765,13 @@
         <span class="tag">Salerno</span>
         <span class="tag">Luci d'Artista</span>
         <span class="tag">Spazio pubblico</span>
+      </div>
+
+      <div class="fig-grid">
+        <figure class="figure span2">
+          <img src="assets/p04-impianto.jpg" alt="Impianto e distribuzione, urban rooms e disegno architettonico del percorso a Salerno">
+          <figcaption><span>Impianto, distribuzione e urban rooms</span><span class="fnum">SALERNO</span></figcaption>
+        </figure>
       </div>
 
       <div class="plate-body">
